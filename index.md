@@ -22,6 +22,7 @@ A possible information architecture for a new docs site for kiara could look lik
   - Something about data lineage and [reproducibility](./concepts/reproducible-research.md)
   - [overview of kiara architecture](./concepts/architecture.md)
   - something to explain when kiara might not be a good fit?
+  - [How kiara does versioning](./concepts/versioning.md)
 
 - List of known plugins, summary of what they do, link to/include their content-based docs (see [below](#docs-from-plugins))
 

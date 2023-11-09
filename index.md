@@ -4,11 +4,11 @@ A possible information architecture for a new docs site for kiara could look lik
 
 - Overview/summary/homepage [draft and ideas](./overview.md)
 
-- I'm a [researcher](./researcher/index.md)
+- I'm a [researcher](./users/index.md)
 
-  - Tutorials/getting started - for [network analysis folks](/researcher/getting-started-network-analysis.md) and [NLP folks](/researcher/getting-started-nlp.md)
-  - how-to specific things - some ideas in `/researcher/how-to-<something>.md`
-  - [how to install python](./researcher/how-to-install-python.md)
+  - Tutorials/getting started - for [network analysis folks](/users/getting-started-network-analysis.md) and [NLP folks](/users/getting-started-nlp.md)
+  - how-to specific things - some ideas in `/users/how-to-<something>.md`
+  - [how to install python](./users/how-to-install-python.md)
 
 - I'm a developer/plugin author
 

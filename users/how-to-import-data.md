@@ -18,21 +18,22 @@ Here's what importing a local file looks like in code.
 ```python
 # get set up with the Kiara python API
 from kiara.api import KiaraAPI
-api = KiaraAPI.instance()
+
+kiara = KiaraAPI.instance()
 
 # let's imagine you have some data stored next to where you're going to run this code from (in the same directory)
-relative_path = './my_local_data.csv'
+relative_path = "./my_local_data.csv"
 # and some other data somewhere else on your filesystem
-absolute_path = '/Users/demouser/Documents/data/my_absolute_data.txt'
+absolute_path = "/Users/demouser/Documents/data/my_absolute_data.txt"
 # you can import a file using either kind of file path
 
 # the import.local.file operation takes a single input, called path, which is the path to your file
-inputs = {'path': relative_path}
+relative_path_inputs = {"path": relative_path}
 
-results = kiara_client.run_job('import.local.file', inputs=inputs)
+import_file_results = kiara.run_job("import.local.file", inputs=relative_path_inputs)
 
 # to then access the file you imported, get it from the 'file' key in the result
-imported_file = results['file']
+imported_file = import_file_results["file"]
 ```
 
 When you want to do other things with this file you imported, you'll want to use the value in `imported_file`, or the ID or alias of that thing, as input to other operations.

@@ -44,7 +44,7 @@ export default defineConfig({
       ],
     }),
     react(),
-    markdoc(),
+    markdoc({ allowHTML: true }),
     keystatic(),
   ],
   output: "hybrid",

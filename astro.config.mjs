@@ -52,6 +52,9 @@ export default defineConfig({
   integrations: [
     starlight({
       title: "kiara",
+      editLink: {
+        baseUrl: "https://github.com/DHARPA-project/kiara-website/edit/main/",
+      },
       customCss: ["./src/styles/custom.css"],
       components: {
         // override the default title component, to add in last modified time

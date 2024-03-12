@@ -1,5 +1,5 @@
 ---
-const { allData, pathName, description, version } = Astro.props;
+const { allData, pathName, description, plugin, version } = Astro.props;
 import { Doc } from "@dharpa/kiara-svelte-components";
 ---
 
@@ -9,7 +9,11 @@ import { Doc } from "@dharpa/kiara-svelte-components";
       {allData.map((d: any) => (
         <>
           <li id={d.type_name}>
-            <a href={`/${version}/${pathName}/${d.type_name}`}>{d.type_name}</a>
+            <a
+              href={`/plugins/${plugin}/${version}/${pathName}/${d.type_name}`}
+            >
+              {d.type_name}
+            </a>
             <Doc doc={d.documentation} verbose={false} />
           </li>
         </>
@@ -17,7 +21,7 @@ import { Doc } from "@dharpa/kiara-svelte-components";
     </ul>
   ) : (
     <p>
-      Plugin at version {version} doesn't provide any {description}.
+      Plugin {plugin} at version {version} doesn't provide any {description}.
     </p>
   )
 }

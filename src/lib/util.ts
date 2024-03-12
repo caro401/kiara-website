@@ -11,40 +11,43 @@ export async function getStaticPathsForDatatype(
   kiaraType: string,
   pathName: string,
 ) {
-  return (await getCollection("plugin_data")).flatMap((plugin) => {
-    const [_, version] = plugin.id.split("-");
+  return (await getCollection("plugins")).flatMap((plugin) => {
+    const [name, identifier] = plugin.id.split("/");
+    const [_, version] = identifier.split("-");
     const typeIds = Object.keys(plugin.data[kiaraType].item_infos);
     return typeIds.map((t) => ({
-      params: { version: version, [pathName]: t },
+      params: { plugin: name, version: version, [pathName]: t },
     }));
   });
 }
 
 export async function getStaticPathsForPluginVersions() {
-  return (await getCollection("plugin_data")).map((plugin) => {
-    const [_, version] = plugin.id.split("-");
-    return { params: { version: version } };
+  return (await getCollection("plugins")).map((plugin) => {
+    const [name, identifier] = plugin.id.split("/");
+    const [_, version] = identifier.split("-");
+    return { params: { plugin: name, version: version } };
   });
 }
 
 export async function getSpecificKiaraType(
+  plugin: string,
   version: string,
   kiaraType: string,
 ): Promise<Record<string, any>> {
   return (
     await getDataEntryById(
-      "plugin_data",
-      // TODO replace this with plugin name from cookiecutter
+      "plugins",
       // @ts-expect-error the build will fail if this string is not one of the files in the `plugins` content collection
-      `kiara_plugin.sample_plugin-${version}`,
+      `${plugin}/kiara_plugin.${plugin}-${version}`,
     )
   ).data[kiaraType].item_infos;
 }
 
 export async function getSpecificKiaraTypeInstance(
+  plugin: string,
   version: string,
   kiaraType: string,
   thingId: string,
 ) {
-  return (await getSpecificKiaraType(version, kiaraType))[thingId];
+  return (await getSpecificKiaraType(plugin, version, kiaraType))[thingId];
 }

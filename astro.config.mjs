@@ -46,8 +46,8 @@ function getOperations() {
 }
 // https://astro.build/config
 export default defineConfig({
-  // TODO update these to be dharpa's details
-  site: "https://caro401.github.io",
+  // https://docs.astro.build/en/guides/deploy/github/#deploying-to-a-githubio-url
+  site: "https://DHARPA-Project.github.io",
   base: "/kiara-website",
   integrations: [
     starlight({

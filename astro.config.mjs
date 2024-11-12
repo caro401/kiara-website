@@ -45,6 +45,9 @@ function getOperations() {
 }
 // https://astro.build/config
 export default defineConfig({
+  // TODO update these to be dharpa's details
+  site: "https://caro401.github.io",
+  base: "/kiara-website",
   integrations: [
     starlight({
       title: "kiara",
@@ -111,5 +114,4 @@ export default defineConfig({
     svelte(),
   ],
   output: "static",
-
 });

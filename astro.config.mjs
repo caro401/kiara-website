@@ -1,9 +1,5 @@
 import { defineConfig } from "astro/config";
 import starlight from "@astrojs/starlight";
-import react from "@astrojs/react";
-import markdoc from "@astrojs/markdoc";
-import keystatic from "@keystatic/astro";
-import cloudflare from "@astrojs/cloudflare";
 import { readdirSync } from "fs";
 import svelte from "@astrojs/svelte";
 import semverSort from "semver-sort";
@@ -58,8 +54,9 @@ export default defineConfig({
       customCss: ["./src/styles/custom.css"],
       components: {
         // override the default title component, to add in last modified time
-        PageTitle: './src/components/Title.astro',
+        PageTitle: "./src/components/Title.astro",
       },
+      expressiveCode: { themes: ["catppuccin-macchiato", "catppuccin-latte"] },
       social: {
         github: "https://github.com/DHARPA-project/kiara-website",
       },
@@ -111,11 +108,8 @@ export default defineConfig({
         },
       ],
     }),
-    react(),
-    markdoc({ allowHTML: true }),
-    keystatic(),
     svelte(),
   ],
-  output: "hybrid",
-  adapter: cloudflare(),
+  output: "static",
+
 });

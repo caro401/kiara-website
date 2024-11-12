@@ -3,6 +3,7 @@ import starlight from "@astrojs/starlight";
 import { readdirSync } from "fs";
 import svelte from "@astrojs/svelte";
 import semverSort from "semver-sort";
+import starlightLinksValidator from "starlight-links-validator";
 
 function getOperations() {
   const plugins = readdirSync("src/content/plugins");
@@ -50,6 +51,8 @@ export default defineConfig({
   base: "/kiara-website",
   integrations: [
     starlight({
+      plugins: [starlightLinksValidator()],
+
       title: "kiara",
       editLink: {
         baseUrl: "https://github.com/DHARPA-project/kiara-website/edit/main/",
